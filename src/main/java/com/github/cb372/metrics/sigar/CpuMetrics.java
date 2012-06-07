@@ -1,4 +1,4 @@
-package com.example.metrics.sigar;
+package com.github.cb372.metrics.sigar;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -54,12 +54,12 @@ public class CpuMetrics extends AbstractSigarMetric {
 
     public void registerGauges(MetricsRegistry registry) {
         registry.newGauge(getClass(), "total-cores", new Gauge<Integer>() {
-            public Integer getValue() {
+            public Integer value() {
                 return totalCoreCount();
             }
         });
         registry.newGauge(getClass(), "physical-cpus", new Gauge<Integer>() {
-            public Integer getValue() {
+            public Integer value() {
                 return physicalCpuCount();
             }
         });

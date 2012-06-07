@@ -1,4 +1,4 @@
-package com.example.metrics.sigar;
+package com.github.cb372.metrics.sigar;
 
 import com.yammer.metrics.core.Gauge;
 import com.yammer.metrics.core.MetricsRegistry;
@@ -105,27 +105,27 @@ public class MemoryMetrics extends AbstractSigarMetric {
 
     public void registerGauges(MetricsRegistry registry) {
         registry.newGauge(getClass(), "memory-free", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return mem().free();
             }
         });
         registry.newGauge(getClass(), "memory-actual-free", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return mem().actualFree();
             }
         });
         registry.newGauge(getClass(), "swap-free", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return swap().free();
             }
         });
         registry.newGauge(getClass(), "swap-pages-in", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return swap().pagesIn();
             }
         });
         registry.newGauge(getClass(), "swap-pages-out", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return swap().pagesOut();
             }
         });

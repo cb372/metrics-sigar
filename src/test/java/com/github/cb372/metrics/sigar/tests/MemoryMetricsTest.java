@@ -1,7 +1,7 @@
-package com.example.metrics.sigar.tests;
+package com.github.cb372.metrics.sigar.tests;
 
-import com.example.metrics.sigar.MemoryMetrics;
-import com.example.metrics.sigar.SigarMetrics;
+import com.github.cb372.metrics.sigar.MemoryMetrics;
+import com.github.cb372.metrics.sigar.SigarMetrics;
 
 import org.junit.Test;
 

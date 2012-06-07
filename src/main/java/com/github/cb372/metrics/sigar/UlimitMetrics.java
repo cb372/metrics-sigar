@@ -1,4 +1,4 @@
-package com.example.metrics.sigar;
+package com.github.cb372.metrics.sigar;
 
 import com.yammer.metrics.core.Gauge;
 import com.yammer.metrics.core.MetricsRegistry;
@@ -88,12 +88,12 @@ public class UlimitMetrics extends AbstractSigarMetric {
 
     public void registerGauges(MetricsRegistry registry) {
         registry.newGauge(getClass(), "ulimit-open-files", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return ulimit().openFiles();
             }
         });
         registry.newGauge(getClass(), "ulimit-stack-size", new Gauge<Long>() {
-            public Long getValue() {
+            public Long value() {
                 return ulimit().stackSize();
             }
         });

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
+    <groupId>com.github.cb372</groupId>
     <artifactId>metrics-sigar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Metrics Sigar Integration</name>
@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <metrics.version>3.0.0-SNAPSHOT</metrics.version>
+        <metrics.version>2.1.2</metrics.version>
         <sigar.version>1.6.4</sigar.version>
     </properties>
 

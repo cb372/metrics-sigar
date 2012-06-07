@@ -1,4 +1,4 @@
-package com.example.metrics.sigar;
+package com.github.cb372.metrics.sigar;
 
 import java.util.List;
 import java.util.ArrayList;

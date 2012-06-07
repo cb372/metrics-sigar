@@ -1,4 +1,4 @@
-package com.example.metrics.sigar;
+package com.github.cb372.metrics.sigar;
 
 import com.yammer.metrics.Metrics;
 import com.yammer.metrics.core.Gauge;
@@ -32,7 +32,7 @@ public class SigarMetrics implements CanRegisterGauges {
 
     public void registerGauges(MetricsRegistry registry) {
         registry.newGauge(getClass(), "pid", new Gauge<Long>() {
-          public Long getValue() {
+          public Long value() {
             return pid();
           }
         });     
