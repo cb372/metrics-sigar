@@ -4,7 +4,7 @@
 
     <groupId>com.github.cb372</groupId>
     <artifactId>metrics-sigar</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Metrics Sigar Integration</name>
     <packaging>jar</packaging>
 
