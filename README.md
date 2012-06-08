@@ -50,7 +50,7 @@ Currently the following data can be collected:
         <repository>
           <id>cb372</id>
           <name>Chris Birchall's Maven repo</name>
-          <url>https://cb372.github.com/m2/releases</url>
+          <url>http://cb372.github.com/m2/releases</url>
         </repository>
 
  2. Download the Sigar native libraries. 

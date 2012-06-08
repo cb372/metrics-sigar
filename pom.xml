@@ -6,14 +6,32 @@
     <artifactId>metrics-sigar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Metrics Sigar Integration</name>
-    <packaging>bundle</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <metrics.version>2.1.2</metrics.version>
         <sigar.version>1.6.4</sigar.version>
+        <github.maven.repo>file:../cb372.github.com/m2</github.maven.repo>
     </properties>
+
+    <distributionManagement>
+      <repository>
+        <id>maven-repo-releases</id>
+        <name>cb372.github.com Releases</name>
+        <url>${github.maven.repo}/releases</url>
+        <layout>default</layout>
+        <uniqueVersion>false</uniqueVersion>
+      </repository>
+      <snapshotRepository>
+        <id>maven-repo-snapshots</id>
+        <name>cb372.github.com Snapshots</name>
+        <url>${github.maven.repo}/snapshots</url>
+        <layout>default</layout>
+        <uniqueVersion>true</uniqueVersion>
+      </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
