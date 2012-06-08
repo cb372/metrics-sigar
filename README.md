@@ -76,6 +76,8 @@ Currently the following data can be collected:
     
             SigarMetrics.getInstance().registerGauges();
 
+See the app in the `/samples` directory for an example.
+
 ## Acknowledgements ##
 
 This module makes use of [Hyperic Sigar](http://support.hyperic.com/display/SIGAR/Home) ([Github link](https://github.com/hyperic/sigar)) under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
