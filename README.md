@@ -76,7 +76,7 @@ Currently the following data can be collected:
     
             SigarMetrics.getInstance().registerGauges();
 
-See the app in the `/samples` directory for an example.
+See the app in the `/sample` directory for an example.
 
 ## Acknowledgements ##
 
