@@ -1,6 +1,6 @@
-# Sigar Integration #
+# Metrics Sigar Integration #
 
-An optional extension to Metrics that uses the [Hyperic Sigar](http://support.hyperic.com/display/SIGAR/Home) library to provide more information about the JVM process and the machine on which it is running.
+A system monitoring library that combines the all-round awesomeness of [Yammer Metrics](https://github.com/codahale/metrics) with the handy native-ness of [Hyperic Sigar](http://support.hyperic.com/display/SIGAR/Home). Provides various metrics about a JVM process and the system on which it is running.
 
 ## Features ##
 
@@ -42,10 +42,16 @@ Currently the following data can be collected:
  1. Add a dependency on metrics-sigar to your project:
 
         <dependency>
-            <groupId>com.yammer.metrics</groupId>
+            <groupId>com.github.cb372</groupId>
             <artifactId>metrics-sigar</artifactId>
-            <version>${metricsVersion}</version>
+            <version>0.0.1</version>
         </dependency>
+        
+        <repository>
+          <id>cb372</id>
+          <name>Chris Birchall's Maven repo</name>
+          <url>https://cb372.github.com/m2/releases</url>
+        </repository>
 
  2. Download the Sigar native libraries. 
     * If downloading manually, download the Sigar binary package from SourceForge [here](http://sourceforge.net/projects/sigar/files/sigar/1.6/). This package includes libs for most OSes and architectures.
@@ -66,7 +72,7 @@ Currently the following data can be collected:
     * Use the `SigarMetrics` singleton object directly for detailed data:
     
             SigarMetrics sm = SigarMetrics.getInstance();
-    * Optionally expose the most useful data as `Gauge`s:
+    * Optionally expose the most useful data as Metrics `Gauge`s:
     
             SigarMetrics.getInstance().registerGauges();
 
