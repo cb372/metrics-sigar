@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = 'com.example.MyApp'
+
+def libVersions = [
+  'metricsSigar': '0.0.1',
+  'sigar': '1.6.4',
+  'slf4j': '1.6.4'
+]
+
+repositories {
+  mavenCentral()
+  maven {
+    url "http://cb372.github.com/m2/releases"
+  }
+}
+
+configurations {
+  nativeLibs
+}
+
+dependencies {
+  compile group: 'com.github.cb372', name: 'metrics-sigar', version: libVersions.metricsSigar
+
+  runtime group: 'org.slf4j', name: 'slf4j-nop', version: libVersions.slf4j
+
+  nativeLibs ("org.fusesource:sigar:${libVersions.sigar}:native") {
+    exclude group: "log4j"
+  }
+}
+
+task extractNativeJar(type: Copy) {
+  configurations.nativeLibs.each {
+    from zipTree(it)
+  }
+  into 'native-libs'
+}
+
+run {
+  dependsOn 'extractNativeJar'
+  jvmArgs = [ '-Dorg.hyperic.sigar.path=./native-libs' ]
+}
