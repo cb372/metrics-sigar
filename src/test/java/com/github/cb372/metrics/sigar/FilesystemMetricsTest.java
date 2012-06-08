@@ -1,22 +1,26 @@
-package com.github.cb372.metrics.sigar.tests;
+package com.github.cb372.metrics.sigar;
 
 import java.io.File;
 import java.util.List;
 
-import com.github.cb372.metrics.sigar.FilesystemMetrics;
 import com.github.cb372.metrics.sigar.FilesystemMetrics.FileSystem;
-import com.github.cb372.metrics.sigar.SigarMetrics;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class FilesystemMetricsTest {
-    private final FilesystemMetrics fsm = SigarMetrics.getInstance().filesystems();
-
+public class FilesystemMetricsTest extends CheckSigarLoadsOk {
     private final double MARGIN_BYTES = 1024 * 1024 * 50; // 50MB
+
+    private FilesystemMetrics fsm;
+
+    @Before
+    public void setUp() {
+        fsm = SigarMetrics.getInstance().filesystems();
+    }
 
     @Test
     public void usageNumbersApproximatelyMatchThoseReturnedByJavaFile() throws Exception {

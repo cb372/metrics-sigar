@@ -1,9 +1,8 @@
-package com.github.cb372.metrics.sigar.tests;
+package com.github.cb372.metrics.sigar;
 
-import com.github.cb372.metrics.sigar.CpuMetrics;
 import com.github.cb372.metrics.sigar.CpuMetrics.CpuTime;
-import com.github.cb372.metrics.sigar.SigarMetrics;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.closeTo;
@@ -13,8 +12,13 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class CpuMetricsTest {
-    private final CpuMetrics cm = SigarMetrics.getInstance().cpu();
+public class CpuMetricsTest extends CheckSigarLoadsOk {
+    private CpuMetrics cm;
+
+    @Before
+    public void setUp() {
+        cm = SigarMetrics.getInstance().cpu();
+    }
 
     @Test
     public void cpuCoreCountIsGreaterThanZero() throws Exception {

@@ -1,10 +1,13 @@
-package com.github.cb372.metrics.sigar.tests;
+package com.github.cb372.metrics.sigar;
 
-import com.github.cb372.metrics.sigar.MemoryMetrics;
-import com.github.cb372.metrics.sigar.SigarMetrics;
+import com.github.cb372.metrics.sigar.MemoryMetrics.MainMemory;
+import com.github.cb372.metrics.sigar.MemoryMetrics.SwapSpace;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
@@ -12,8 +15,13 @@ import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 import static org.junit.Assert.assertThat;
 
-public class MemoryMetricsTest {
-    private final MemoryMetrics mm = SigarMetrics.getInstance().memory();
+public class MemoryMetricsTest extends CheckSigarLoadsOk {
+    private MemoryMetrics mm;
+
+    @Before
+    public void setUp() {
+        mm = SigarMetrics.getInstance().memory();
+    }
 
     @Test
     public void totalMemoryIsGreaterThanZero() throws Exception {
