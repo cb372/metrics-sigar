@@ -1,7 +1,7 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.core.Gauge;
-import com.yammer.metrics.core.MetricsRegistry;
+import com.yammer.metrics.MetricRegistry;
+import com.yammer.metrics.Gauge;
 
 import org.hyperic.sigar.ResourceLimit;
 import org.hyperic.sigar.Sigar;
@@ -86,14 +86,14 @@ public class UlimitMetrics extends AbstractSigarMetric {
         }
     }
 
-    public void registerGauges(MetricsRegistry registry) {
-        registry.newGauge(getClass(), "ulimit-open-files", new Gauge<Long>() {
-            public Long value() {
+    public void registerGauges(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "ulimit-open-files"), new Gauge<Long>() {
+            public Long getValue() {
                 return ulimit().openFiles();
             }
         });
-        registry.newGauge(getClass(), "ulimit-stack-size", new Gauge<Long>() {
-            public Long value() {
+        registry.register(MetricRegistry.name(getClass(), "ulimit-stack-size"), new Gauge<Long>() {
+            public Long getValue() {
                 return ulimit().stackSize();
             }
         });
