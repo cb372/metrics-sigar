@@ -72,7 +72,6 @@ Currently the following data can be collected:
     * Use the `SigarMetrics` singleton object directly for detailed data:
     
             SigarMetrics sm = SigarMetrics.getInstance();
-
     * Optionally expose the most useful data as Metrics `Gauge`s:
     
             SigarMetrics.getInstance().registerGauges(myMetricRegistry);
