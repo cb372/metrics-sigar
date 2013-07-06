@@ -3,9 +3,9 @@ package com.github.cb372.metrics.sigar;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.yammer.metrics.core.Gauge;
-import com.yammer.metrics.core.MetricsRegistry;
-import com.yammer.metrics.util.PercentGauge;
+import com.codahale.metrics.Gauge;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.RatioGauge;
 
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.CpuPerc;
@@ -52,19 +52,24 @@ public class CpuMetrics extends AbstractSigarMetric {
         public double irq() { return irq; }
     }
 
-    public void registerGauges(MetricsRegistry registry) {
-        registry.newGauge(getClass(), "total-cores", new Gauge<Integer>() {
-            public Integer value() {
+    public void registerGauges(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "total-cores"), new Gauge<Integer>() {
+            public Integer getValue() {
                 return totalCoreCount();
             }
         });
-        registry.newGauge(getClass(), "physical-cpus", new Gauge<Integer>() {
-            public Integer value() {
+        registry.register(MetricRegistry.name(getClass(), "physical-cpus"), new Gauge<Integer>() {
+            public Integer getValue() {
                 return physicalCpuCount();
             }
         });
-        registry.newGauge(getClass(), "cpu-time-user-percent", new PercentGauge() {
-            public double getNumerator() {
+        registry.register(MetricRegistry.name(getClass(), "cpu-time-user-percent"), new RatioGauge() {
+            @Override
+            protected Ratio getRatio() {
+                return Ratio.of(getNumerator(), 1.0);
+            }
+
+            private double getNumerator() {
                 List<CpuTime> cpus = cpus();
                 double userTime = 0.0;
                 for (CpuTime cpu : cpus) {
@@ -72,21 +77,19 @@ public class CpuMetrics extends AbstractSigarMetric {
                 }
                 return userTime;
             }
-            public double getDenominator() {
-                return 1.0;
-            }
         });
-        registry.newGauge(getClass(), "cpu-time-sys-percent", new PercentGauge() {
-            public double getNumerator() {
+        registry.register(MetricRegistry.name(getClass(), "cpu-time-sys-percent"), new RatioGauge() {
+            @Override
+            protected Ratio getRatio() {
+                return Ratio.of(getNumerator(), 1.0);
+            }
+            private double getNumerator() {
                 List<CpuTime> cpus = cpus();
                 double userTime = 0.0;
                 for (CpuTime cpu : cpus) {
                     userTime += cpu.sys();
                 }
                 return userTime;
-            }
-            public double getDenominator() {
-                return 1.0;
             }
         });
     }

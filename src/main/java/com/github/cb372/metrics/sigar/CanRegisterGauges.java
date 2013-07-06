@@ -1,13 +1,13 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.core.MetricsRegistry;
+import com.codahale.metrics.MetricRegistry;
 
 interface CanRegisterGauges {
 
     /**
      * Register zero or more Gauges in the given registry.
      */
-    public void registerGauges(MetricsRegistry registry);
+    public void registerGauges(MetricRegistry registry);
 
 }
 

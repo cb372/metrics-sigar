@@ -3,7 +3,7 @@ package com.github.cb372.metrics.sigar;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.yammer.metrics.core.MetricsRegistry;
+import com.codahale.metrics.MetricRegistry;
 
 import org.hyperic.sigar.FileSystemUsage;
 import org.hyperic.sigar.Sigar;
@@ -53,7 +53,7 @@ public class FilesystemMetrics extends AbstractSigarMetric {
         public long freeSpaceKB() { return freeSpaceKB; }
     }
 
-    public void registerGauges(MetricsRegistry registry) {
+    public void registerGauges(MetricRegistry registry) {
         // Do not register any gauges
     }
 

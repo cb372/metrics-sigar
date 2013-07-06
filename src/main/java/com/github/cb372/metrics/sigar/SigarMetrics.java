@@ -1,8 +1,7 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.Metrics;
-import com.yammer.metrics.core.Gauge;
-import com.yammer.metrics.core.MetricsRegistry;
+import com.codahale.metrics.Gauge;
+import com.codahale.metrics.MetricRegistry;
 
 import org.hyperic.sigar.Sigar;
 
@@ -23,16 +22,9 @@ public class SigarMetrics implements CanRegisterGauges {
         // singleton
     }
 
-    /**
-     * Register all gauges in the default registry.
-     */
-    public void registerGauges() {
-        registerGauges(Metrics.defaultRegistry());
-    }
-
-    public void registerGauges(MetricsRegistry registry) {
-        registry.newGauge(getClass(), "pid", new Gauge<Long>() {
-          public Long value() {
+    public void registerGauges(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "pid"), new Gauge<Long>() {
+          public Long getValue() {
             return pid();
           }
         });     

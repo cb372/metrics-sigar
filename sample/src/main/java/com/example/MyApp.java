@@ -24,7 +24,7 @@ public class MyApp {
         }
         System.out.println("=====");
 
-        // Register a few of the more interesting metrics as Yammer Metrics gauges
+        // Register a few of the more interesting metrics as Metrics gauges
         sm.registerGauges();
 
         // and print them to the console every 5 seconds

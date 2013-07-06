@@ -1,7 +1,7 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.core.Gauge;
-import com.yammer.metrics.core.MetricsRegistry;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Gauge;
 
 import org.hyperic.sigar.Mem;
 import org.hyperic.sigar.Swap;
@@ -103,29 +103,29 @@ public class MemoryMetrics extends AbstractSigarMetric {
         }
     }
 
-    public void registerGauges(MetricsRegistry registry) {
-        registry.newGauge(getClass(), "memory-free", new Gauge<Long>() {
-            public Long value() {
+    public void registerGauges(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-free"), new Gauge<Long>() {
+            public Long getValue() {
                 return mem().free();
             }
         });
-        registry.newGauge(getClass(), "memory-actual-free", new Gauge<Long>() {
-            public Long value() {
+        registry.register(MetricRegistry.name(getClass(), "memory-actual-free"), new Gauge<Long>() {
+            public Long getValue() {
                 return mem().actualFree();
             }
         });
-        registry.newGauge(getClass(), "swap-free", new Gauge<Long>() {
-            public Long value() {
+        registry.register(MetricRegistry.name(getClass(), "swap-free"), new Gauge<Long>() {
+            public Long getValue() {
                 return swap().free();
             }
         });
-        registry.newGauge(getClass(), "swap-pages-in", new Gauge<Long>() {
-            public Long value() {
+        registry.register(MetricRegistry.name(getClass(), "swap-pages-in"), new Gauge<Long>() {
+            public Long getValue() {
                 return swap().pagesIn();
             }
         });
-        registry.newGauge(getClass(), "swap-pages-out", new Gauge<Long>() {
-            public Long value() {
+        registry.register(MetricRegistry.name(getClass(), "swap-pages-out"), new Gauge<Long>() {
+            public Long getValue() {
                 return swap().pagesOut();
             }
         });

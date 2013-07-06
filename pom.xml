@@ -6,7 +6,7 @@
   <artifactId>metrics-sigar</artifactId>
   <version>0.1.1-SNAPSHOT</version>
   <name>Metrics Sigar Integration</name>
-  <description>Yammer Metrics + Hyperic Sigar for OS-level monitoring</description>
+  <description>Metrics + Hyperic Sigar for OS-level monitoring</description>
   <url>https://github.com/cb372/metrics-sigar</url>
   <packaging>jar</packaging>
 
@@ -41,13 +41,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <metrics.version>2.2.0</metrics.version>
+    <metrics.version>3.0.0</metrics.version>
     <sigar.version>1.6.4</sigar.version>
   </properties>
 
   <dependencies>
       <dependency>
-          <groupId>com.yammer.metrics</groupId>
+          <groupId>com.codahale.metrics</groupId>
           <artifactId>metrics-core</artifactId>
           <version>${metrics.version}</version>
       </dependency>
