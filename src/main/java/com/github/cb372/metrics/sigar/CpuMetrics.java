@@ -3,9 +3,9 @@ package com.github.cb372.metrics.sigar;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.yammer.metrics.Gauge;
-import com.yammer.metrics.MetricRegistry;
-import com.yammer.metrics.RatioGauge;
+import com.codahale.metrics.Gauge;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.RatioGauge;
 
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.CpuPerc;

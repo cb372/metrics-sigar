@@ -1,6 +1,6 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.MetricRegistry;
+import com.codahale.metrics.MetricRegistry;
 
 interface CanRegisterGauges {
 

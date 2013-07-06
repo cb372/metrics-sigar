@@ -1,7 +1,7 @@
 package com.github.cb372.metrics.sigar;
 
-import com.yammer.metrics.Gauge;
-import com.yammer.metrics.MetricRegistry;
+import com.codahale.metrics.Gauge;
+import com.codahale.metrics.MetricRegistry;
 
 import org.hyperic.sigar.Sigar;
 

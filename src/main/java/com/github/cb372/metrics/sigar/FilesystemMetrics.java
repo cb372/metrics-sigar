@@ -3,7 +3,7 @@ package com.github.cb372.metrics.sigar;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.yammer.metrics.MetricRegistry;
+import com.codahale.metrics.MetricRegistry;
 
 import org.hyperic.sigar.FileSystemUsage;
 import org.hyperic.sigar.Sigar;

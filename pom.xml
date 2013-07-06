@@ -41,13 +41,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <metrics.version>3.0.0-BETA1</metrics.version>
+    <metrics.version>3.0.0</metrics.version>
     <sigar.version>1.6.4</sigar.version>
   </properties>
 
   <dependencies>
       <dependency>
-          <groupId>com.yammer.metrics</groupId>
+          <groupId>com.codahale.metrics</groupId>
           <artifactId>metrics-core</artifactId>
           <version>${metrics.version}</version>
       </dependency>
