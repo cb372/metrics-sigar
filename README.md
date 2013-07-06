@@ -1,6 +1,12 @@
 # Metrics Sigar Integration #
 
-A system monitoring library that combines the all-round awesomeness of [Yammer Metrics](https://github.com/codahale/metrics) with the handy native-ness of [Hyperic Sigar](http://support.hyperic.com/display/SIGAR/Home). Provides various metrics about a JVM process and the system on which it is running.
+A system monitoring library that combines the all-round awesomeness of [Metrics](https://github.com/codahale/metrics) with the handy native-ness of [Hyperic Sigar](http://support.hyperic.com/display/SIGAR/Home). Provides various metrics about a JVM process and the system on which it is running.
+
+## Versioning ##
+
+Version *0.1.x* is compatible with *Metrics 2.x*.
+
+Version *0.2.x* is compatible with *Metrics 3.x*.
 
 ## Features ##
 
