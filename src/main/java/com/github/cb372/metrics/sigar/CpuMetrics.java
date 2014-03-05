@@ -53,16 +53,29 @@ public class CpuMetrics extends AbstractSigarMetric {
     }
 
     public void registerGauges(MetricRegistry registry) {
+        registerTotalCores(registry);
+        registerPhysicalCpus(registry);
+        registerCpuTimeUserPercent(registry);
+        registerCpuTimeSysPercent(registry);
+    }
+
+    public void registerTotalCores(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "total-cores"), new Gauge<Integer>() {
             public Integer getValue() {
                 return totalCoreCount();
             }
         });
+    }
+
+    public void registerPhysicalCpus(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "physical-cpus"), new Gauge<Integer>() {
             public Integer getValue() {
                 return physicalCpuCount();
             }
         });
+    }
+
+    public void registerCpuTimeUserPercent(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "cpu-time-user-percent"), new RatioGauge() {
             @Override
             protected Ratio getRatio() {
@@ -78,11 +91,15 @@ public class CpuMetrics extends AbstractSigarMetric {
                 return userTime;
             }
         });
+    }
+
+    public void registerCpuTimeSysPercent(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "cpu-time-sys-percent"), new RatioGauge() {
             @Override
             protected Ratio getRatio() {
                 return Ratio.of(getNumerator(), 1.0);
             }
+
             private double getNumerator() {
                 List<CpuTime> cpus = cpus();
                 double userTime = 0.0;

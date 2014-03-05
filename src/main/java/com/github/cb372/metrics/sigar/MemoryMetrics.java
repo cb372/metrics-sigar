@@ -104,26 +104,46 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerGauges(MetricRegistry registry) {
+        registerMemoryFree(registry);
+        registerMemoryActualFree(registry);
+        registerSwapFree(registry);
+        registerSwapPagesIn(registry);
+        registerSwapPagesOut(registry);
+    }
+
+    public void registerMemoryFree(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "memory-free"), new Gauge<Long>() {
             public Long getValue() {
                 return mem().free();
             }
         });
+    }
+
+    public void registerMemoryActualFree(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "memory-actual-free"), new Gauge<Long>() {
             public Long getValue() {
                 return mem().actualFree();
             }
         });
+    }
+
+    public void registerSwapFree(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "swap-free"), new Gauge<Long>() {
             public Long getValue() {
                 return swap().free();
             }
         });
+    }
+
+    public void registerSwapPagesIn(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "swap-pages-in"), new Gauge<Long>() {
             public Long getValue() {
                 return swap().pagesIn();
             }
         });
+    }
+
+    public void registerSwapPagesOut(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "swap-pages-out"), new Gauge<Long>() {
             public Long getValue() {
                 return swap().pagesOut();
