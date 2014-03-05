@@ -87,11 +87,19 @@ public class UlimitMetrics extends AbstractSigarMetric {
     }
 
     public void registerGauges(MetricRegistry registry) {
+        registerUlimitOpenFiles(registry);
+        registerUlimitStackSize(registry);
+    }
+
+    public void registerUlimitOpenFiles(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "ulimit-open-files"), new Gauge<Long>() {
             public Long getValue() {
                 return ulimit().openFiles();
             }
         });
+    }
+
+    public void registerUlimitStackSize(MetricRegistry registry) {
         registry.register(MetricRegistry.name(getClass(), "ulimit-stack-size"), new Gauge<Long>() {
             public Long getValue() {
                 return ulimit().stackSize();
