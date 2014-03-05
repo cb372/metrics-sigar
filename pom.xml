@@ -4,7 +4,7 @@
 
   <groupId>com.github.cb372</groupId>
   <artifactId>metrics-sigar</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2-SNAPSHOT</version>
   <name>Metrics Sigar Integration</name>
   <description>Metrics + Hyperic Sigar for OS-level monitoring</description>
   <url>https://github.com/cb372/metrics-sigar</url>
