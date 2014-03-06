@@ -31,27 +31,34 @@ public class MemoryMetrics extends AbstractSigarMetric {
 
     public static final class MainMemory extends MemSegment {
         private final long actualUsed, actualFree;
+        private final double usedPercent, freePercent;
     
         private MainMemory(//
                 long total, long used, long free, //
-                long actualUsed, long actualFree) {
+                long actualUsed, long actualFree,
+                double usedPercent, double freePercent) {
             super(total, used, free);
             this.actualUsed = actualUsed;
             this.actualFree = actualFree;
+            this.usedPercent = usedPercent;
+            this.freePercent = freePercent;
         }
 
         public static MainMemory fromSigarBean(Mem mem) {
             return new MainMemory( //
                     mem.getTotal(), mem.getUsed(), mem.getFree(), //
-                    mem.getActualUsed(), mem.getActualFree()); 
+                    mem.getActualUsed(), mem.getActualFree(),
+                    mem.getUsedPercent(), mem.getFreePercent());
         }
 
         private static MainMemory undef() {
-            return new MainMemory(-1L, -1L, -1L, -1L, -1L);
+            return new MainMemory(-1L, -1L, -1L, -1L, -1L, -1, -1);
         }
         
         public long actualUsed() { return actualUsed; }
         public long actualFree() { return actualFree; }
+        public double usedPercent() { return usedPercent; }
+        public double freePercent() { return freePercent; }
     }
 
     public static final class SwapSpace extends MemSegment {
@@ -106,6 +113,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     public void registerGauges(MetricRegistry registry) {
         registerMemoryFree(registry);
         registerMemoryActualFree(registry);
+        registerMemoryUsed(registry);
+        registerMemoryActualUsed(registry);
+        registerMemoryTotal(registry);
+        registerMemoryUsedPercent(registry);
+        registerMemoryFreePercent(registry);
         registerSwapFree(registry);
         registerSwapPagesIn(registry);
         registerSwapPagesOut(registry);
@@ -123,6 +135,46 @@ public class MemoryMetrics extends AbstractSigarMetric {
         registry.register(MetricRegistry.name(getClass(), "memory-actual-free"), new Gauge<Long>() {
             public Long getValue() {
                 return mem().actualFree();
+            }
+        });
+    }
+
+    public void registerMemoryUsed(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-used"), new Gauge<Long>() {
+            public Long getValue() {
+                return mem().used();
+            }
+        });
+    }
+
+    public void registerMemoryActualUsed(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-actual-used"), new Gauge<Long>() {
+            public Long getValue() {
+                return mem().actualUsed();
+            }
+        });
+    }
+
+    public void registerMemoryTotal(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-total"), new Gauge<Long>() {
+            public Long getValue() {
+                return mem().total();
+            }
+        });
+    }
+
+    public void registerMemoryUsedPercent(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-used-percent"), new Gauge<Double>() {
+            public Double getValue() {
+                return mem().usedPercent();
+            }
+        });
+    }
+
+    public void registerMemoryFreePercent(MetricRegistry registry) {
+        registry.register(MetricRegistry.name(getClass(), "memory-free-percent"), new Gauge<Double>() {
+            public Double getValue() {
+                return mem().freePercent();
             }
         });
     }
