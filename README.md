@@ -23,7 +23,7 @@ Currently the following data can be collected:
         * Ratio of time spent servicing interrupts 
 * Memory (equivalent to `free` command)
     * RAM size in MB
-    * Main memory total, used, free (KB)
+    * Main memory total, used, free (KB), used %, free %
     * Main memory 'actual' used, free (the "+/- buffers/cache" row in the Linux free command)
     * Swap memory total, used, free
     * Pages swapped in, out
@@ -50,7 +50,7 @@ Currently the following data can be collected:
         <dependency>
             <groupId>com.github.cb372</groupId>
             <artifactId>metrics-sigar</artifactId>
-            <version>0.1.0</version>
+            <version>0.2.2</version>
         </dependency>
 
  2. Download the Sigar native libraries. 
@@ -86,7 +86,6 @@ This module makes use of [Hyperic Sigar](http://support.hyperic.com/display/SIGA
 
 * Port more of the Sigar API
 * Sigar seems to consistently give an incorrect value for the number of CPUs. Try to find a workaround.
-* Support more fine-grained registration of gauges.
 
 ## Notes ##
 
