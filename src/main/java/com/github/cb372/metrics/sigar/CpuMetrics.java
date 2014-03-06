@@ -60,7 +60,11 @@ public class CpuMetrics extends AbstractSigarMetric {
     }
 
     public void registerTotalCores(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "total-cores"), new Gauge<Integer>() {
+        registerTotalCores(registry, MetricRegistry.name(getClass(), "total-cores"));
+    }
+
+    public void registerTotalCores(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Integer>() {
             public Integer getValue() {
                 return totalCoreCount();
             }
@@ -68,7 +72,11 @@ public class CpuMetrics extends AbstractSigarMetric {
     }
 
     public void registerPhysicalCpus(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "physical-cpus"), new Gauge<Integer>() {
+        registerPhysicalCpus(registry, MetricRegistry.name(getClass(), "physical-cpus"));
+    }
+
+    public void registerPhysicalCpus(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Integer>() {
             public Integer getValue() {
                 return physicalCpuCount();
             }
@@ -76,7 +84,11 @@ public class CpuMetrics extends AbstractSigarMetric {
     }
 
     public void registerCpuTimeUserPercent(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "cpu-time-user-percent"), new RatioGauge() {
+        registerCpuTimeUserPercent(registry, MetricRegistry.name(getClass(), "cpu-time-user-percent"));
+    }
+
+    public void registerCpuTimeUserPercent(MetricRegistry registry, String name) {
+        registry.register(name, new RatioGauge() {
             @Override
             protected Ratio getRatio() {
                 return Ratio.of(getNumerator(), 1.0);
@@ -94,7 +106,11 @@ public class CpuMetrics extends AbstractSigarMetric {
     }
 
     public void registerCpuTimeSysPercent(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "cpu-time-sys-percent"), new RatioGauge() {
+        registerCpuTimeSysPercent(registry, MetricRegistry.name(getClass(), "cpu-time-sys-percent"));
+    }
+
+    public void registerCpuTimeSysPercent(MetricRegistry registry, String name) {
+        registry.register(name, new RatioGauge() {
             @Override
             protected Ratio getRatio() {
                 return Ratio.of(getNumerator(), 1.0);

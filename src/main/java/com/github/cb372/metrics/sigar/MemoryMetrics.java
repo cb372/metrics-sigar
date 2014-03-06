@@ -124,7 +124,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryFree(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-free"), new Gauge<Long>() {
+        registerMemoryFree(registry, MetricRegistry.name(getClass(), "memory-free"));
+    }
+
+    public void registerMemoryFree(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return mem().free();
             }
@@ -132,7 +136,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryActualFree(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-actual-free"), new Gauge<Long>() {
+        registerMemoryActualFree(registry, MetricRegistry.name(getClass(), "memory-actual-free"));
+    }
+
+    public void registerMemoryActualFree(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return mem().actualFree();
             }
@@ -140,7 +148,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryUsed(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-used"), new Gauge<Long>() {
+        registerMemoryUsed(registry, MetricRegistry.name(getClass(), "memory-used"));
+    }
+
+    public void registerMemoryUsed(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return mem().used();
             }
@@ -148,7 +160,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryActualUsed(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-actual-used"), new Gauge<Long>() {
+        registerMemoryActualUsed(registry, MetricRegistry.name(getClass(), "memory-actual-used"));
+    }
+
+    public void registerMemoryActualUsed(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return mem().actualUsed();
             }
@@ -156,7 +172,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryTotal(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-total"), new Gauge<Long>() {
+        registerMemoryTotal(registry, MetricRegistry.name(getClass(), "memory-total"));
+    }
+
+    public void registerMemoryTotal(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return mem().total();
             }
@@ -164,7 +184,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryUsedPercent(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-used-percent"), new Gauge<Double>() {
+        registerMemoryUsedPercent(registry, MetricRegistry.name(getClass(), "memory-used-percent"));
+    }
+
+    public void registerMemoryUsedPercent(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Double>() {
             public Double getValue() {
                 return mem().usedPercent();
             }
@@ -172,7 +196,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerMemoryFreePercent(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "memory-free-percent"), new Gauge<Double>() {
+        registerMemoryFreePercent(registry, MetricRegistry.name(getClass(), "memory-free-percent"));
+    }
+
+    public void registerMemoryFreePercent(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Double>() {
             public Double getValue() {
                 return mem().freePercent();
             }
@@ -180,7 +208,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerSwapFree(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "swap-free"), new Gauge<Long>() {
+        registerSwapFree(registry, MetricRegistry.name(getClass(), "swap-free"));
+    }
+
+    public void registerSwapFree(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return swap().free();
             }
@@ -188,7 +220,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerSwapPagesIn(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "swap-pages-in"), new Gauge<Long>() {
+        registerSwapPagesIn(registry, MetricRegistry.name(getClass(), "swap-pages-in"));
+    }
+
+    public void registerSwapPagesIn(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return swap().pagesIn();
             }
@@ -196,7 +232,11 @@ public class MemoryMetrics extends AbstractSigarMetric {
     }
 
     public void registerSwapPagesOut(MetricRegistry registry) {
-        registry.register(MetricRegistry.name(getClass(), "swap-pages-out"), new Gauge<Long>() {
+        registerSwapPagesOut(registry, MetricRegistry.name(getClass(), "swap-pages-out"));
+    }
+
+    public void registerSwapPagesOut(MetricRegistry registry, String name) {
+        registry.register(name, new Gauge<Long>() {
             public Long getValue() {
                 return swap().pagesOut();
             }
