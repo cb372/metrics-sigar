@@ -5,13 +5,14 @@ apply plugin: 'application'
 mainClassName = 'com.example.MyApp'
 
 def libVersions = [
-  'metricsSigar': '0.2.0',
+  'metricsSigar': '0.2.2',
   'sigar': '1.6.4',
   'slf4j': '1.6.4'
 ]
 
 repositories {
   mavenCentral()
+  mavenLocal()
 }
 
 configurations {
